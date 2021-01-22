@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - dockerfile
+
+before_install:
+ - docker build -t dockermati/docker-react Dockerfile.dev .
+
+ script:
+  - docker run -e CI=true dockermati/docker-react npm run test
